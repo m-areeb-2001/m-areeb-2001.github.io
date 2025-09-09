@@ -1,0 +1,95 @@
+---
+// src/pages/publications.astro
+import { Image } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CustomPublication from '../components/CustomPublication';
+import { publications, type Pub } from '../constant';
+/* -----------------------------------------------------------
+   Replace items or load them from Markdown / CMS later.
+----------------------------------------------------------- */
+
+
+/* -------- group by year so we can print the right-side label ---------- */
+// @ts-ignore
+function groupBy(arr, keyFn) {
+  // @ts-ignore
+  return arr.reduce((acc, item) => {
+    const key = keyFn(item);
+    if (!acc[key]) acc[key] = [];
+    acc[key].push(item);
+    return acc;
+  }, {});
+}
+// @ts-ignore
+const byYear = groupBy(publications, (p) => p.year);
+---
+
+<BaseLayout
+  title="Publications | Muhammad Areeb"
+  description="Published research papers by Muhammad Areeb."
+>
+  <section
+    id="publications"
+    class="pt-20 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 pb-24"
+  >
+    <h1 class="text-3xl font-bold">Publications</h1>
+    <p class="mt-1 text-sm text-gray-400">
+      Some more cool research going on, stay tuned.
+    </p>
+
+    <!-- ========== loop years (latest first) ========== -->
+    {Object.keys(byYear)
+      .sort((a, b) => Number(b) - Number(a))
+      .map((year) => (
+        <div class="mt-10" >
+          <!-- divider with year on the right -->
+          <div
+            class="relative border-t border-gray-700/40 pb-6
+                   after:absolute after:right-0 after:-top-9
+                   after:text-2xl after:font-bold after:text-gray-700
+                   dark:after:text-gray-600
+                   after:content-[attr(data-year)]"
+            data-year={year}
+          />
+
+          <!-- cards in this year -->
+          {/* @ts-ignore */}
+          {byYear[year].map((p: Pub) => (
+            <article
+              class="mt-6 flex flex-col gap-6 md:flex-row
+                     rounded-lg border border-gray-600/40
+                     bg-gray-800/20 dark:bg-gray-700/10
+                     p-6 shadow-sm transition hover:shadow-md"
+             
+            >
+              <!-- thumbnail -->
+              <Image
+                src={p.thumbnail}
+                alt="thumbnail"
+                class="h-28 w-28 shrink-0 rounded bg-white object-contain"
+                width="112"
+                height="112"
+                loading="eager"
+                fetchpriority="high"
+              />
+
+              <!-- details -->
+              <div class="flex flex-1 flex-col gap-3">
+                <header>
+                  <h2 class="text-lg font-medium">{p.title}</h2>
+                  <p class="text-sm text-gray-400">{p.date}</p>
+                </header>
+
+                <CustomPublication
+                client:load
+                  htmlUrl={p.htmlUrl}
+                  pdfUrl={p.pdfUrl}
+                  abstract={p.abstract}
+                />
+              </div>
+            </article>
+          ))}
+        </div>
+      ))}
+  </section>
+</BaseLayout>

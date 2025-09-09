@@ -1,0 +1,61 @@
+---
+/* BaseLayout.astro */
+
+import Navbar from '../components/Navbar.tsx';
+import '../styles/global.css';
+
+/* -------- Accept props from the page -------- */
+export interface Props {
+  title?: string             // <title>
+  description?: string       // <meta name="description">
+  image?: string             // Open Graph / Twitter card image
+  noIndex?: boolean          // true → <meta name="robots" content="noindex">
+}
+
+const {
+  title        = 'Muhammad Areeb',
+  description  = 'Personal portfolio of Muhammad Areeb, AI & Software Engineer.',
+  image,
+  noIndex      = false,
+} = Astro.props;
+---
+
+<html
+  lang="en"
+  class="bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100 transition-colors"
+>
+  <head>
+    <!-- BASIC SEO -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+
+    <!-- SOCIAL CARDS -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <link rel="icon" href="/favicon.ico" />
+    {image && <meta property="og:image" content={image} />}
+    {image && <meta name="twitter:card" content="summary_large_image" />}
+    {image && <meta name="twitter:image" content={image} />}
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Optional: prevent indexing on drafts -->
+    {noIndex && <meta name="robots" content="noindex" />}
+
+    <!-- Pre-paint dark-mode guard -->
+    <script is:inline>
+      (() => {
+        const saved = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (saved === 'dark' || (!saved && prefersDark)) {
+          document.documentElement.classList.add('dark');
+        }
+      })();
+    </script>
+  </head>
+
+  <body class="min-h-screen">
+    <Navbar client:load page={Astro.url.pathname} />
+    <slot />
+  </body>
+</html>

@@ -1,0 +1,82 @@
+---
+// src/pages/projects.astro
+import { Image } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { projects, type Project } from '../constant';
+import Footer from '../layouts/Footer.astro';
+/* -------------------------------------------------
+   You can move this data to Markdown or a CMS later.
+------------------------------------------------- */
+
+---
+
+<BaseLayout
+  title="Projects | Muhammad Areeb"
+  description="Selected robotics, CV, and AI projects by Muhammad Areeb."
+>
+  <section
+    id="projects"
+    class="pt-20 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 pb-24"
+  >
+    <h1 class="text-3xl font-bold">Projects</h1>
+
+    <div class="mt-8 space-y-10">
+      {projects.map((p: Project) => (
+        <article
+          class="rounded-lg border border-gray-600/40
+                 bg-gray-800/20 dark:bg-gray-700/10
+                 p-6 shadow-sm transition hover:shadow-md"
+          
+        >
+          <div class="flex flex-col gap-6 md:flex-row">
+            <!-- thumbnail -->
+            <Image
+              src={p.thumbnail}
+              alt={`${p.title} thumbnail`}
+              class="h-28 w-36 shrink-0 rounded object-cover ring-1 ring-gray-500/30 dark:ring-gray-400/30"
+                width="112"
+                height="112"
+                loading="eager"
+                fetchpriority="high"
+            />
+
+            <!-- details -->
+            <div class="flex-1">
+              <header class="flex flex-col gap-1 md:flex-row md:justify-between">
+                <h2 class="text-lg font-semibold">{p.title}</h2>
+                {p.status && (
+                  // @ts-ignore
+                  <span class="text-sm text-indigo-300" innerHTML={p.status} />
+                )}
+                {p.dates && (
+                  <span class="text-sm text-gray-400 whitespace-nowrap">
+                    {p.dates}
+                  </span>
+                )}
+              </header>
+
+              <p class="mt-2 text-sm text-gray-300">{p.description}</p>
+
+              <div class="mt-4 flex flex-wrap gap-2">
+                {p.links.map((l) => (
+                  <a
+                    href={l.href}
+                    target="_blank"
+                    class="rounded bg-indigo-600 px-4 py-3 text-xs font-medium
+                           text-white shadow hover:bg-indigo-700
+                           focus-visible:outline focus-visible:ring-2
+                           focus-visible:ring-indigo-400"
+                    
+                  >
+                    {l.label}
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+  <Footer />
+</BaseLayout>

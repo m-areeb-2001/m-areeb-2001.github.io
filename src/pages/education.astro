@@ -1,0 +1,76 @@
+---
+// src/pages/education.astro
+import { Image } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Footer from '../layouts/Footer.astro';
+import { schools } from '../constant';
+/* ------------------------------------------------------------------
+   Replace the logo images, dates, and bullet points with your own.
+   (If you’d rather pull from Markdown or a CMS later, just swap out
+   the array for a fetch or import.)
+-------------------------------------------------------------------*/
+
+---
+
+<BaseLayout
+  title="Education | Muhammad Areeb"
+  description="Academic background of Muhammad Areeb – PhD student and Computer Systems Engineer."
+>
+  <!-- ========================================================= -->
+  <!--                     EDUCATION SECTION                      -->
+  <!-- ========================================================= -->
+  <section
+    id="education"
+    class="pt-20        /* keeps content below sticky navbar */
+           mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 pb-16"
+  >
+    <h1 class="text-3xl font-bold">Education</h1>
+
+    <div class="mt-8 space-y-10">
+      {schools.map((school) => (
+        <article
+          class="rounded-lg border border-gray-600/40
+                 bg-gray-800/20 dark:bg-gray-700/10
+                 p-6 shadow-sm transition hover:shadow-md"
+         
+        >
+          <div class="flex flex-col gap-6 md:flex-row">
+            <!-- ---------- Logo ---------- -->
+            <Image
+              src={school.logo}
+              alt={`${school.name + ' logo'}`}
+              class="h-28 w-28 shrink-0 rounded object-contain ring-1 ring-gray-500/30 dark:ring-gray-400/30"
+              loading="eager"
+              decoding="async"
+              fetchpriority="high"
+              width="112"
+              height="112"
+            />
+
+            <!-- ---------- Details ---------- -->
+            <div class="flex-1">
+              <header
+                class="flex flex-col gap-2 md:flex-row md:justify-between md:items-start"
+              >
+                <h2 class="text-lg font-semibold">{school.name}</h2>
+                <span class="text-sm text-gray-400 whitespace-nowrap">
+                  {school.dates}
+                </span>
+              </header>
+
+              <p class="mt-0.5 text-sm font-medium">{school.degree}</p>
+              <p class="text-sm text-gray-400">{school.location}</p>
+
+              <ul class="mt-3 ml-5 list-disc space-y-1 text-sm text-gray-100">
+                {school.summary.map((s) => (
+                  <li >{s}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+  <Footer />
+</BaseLayout>

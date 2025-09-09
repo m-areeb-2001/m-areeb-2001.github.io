@@ -1,0 +1,213 @@
+---
+// src/pages/index.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// Icons (only used inside <Astro> JSX blocks, so the bundle size is minimal)
+import { FiPhoneCall, FiMail } from 'react-icons/fi';
+import { SiLinkedin, SiResearchgate } from 'react-icons/si';
+import Footer from '../layouts/Footer.astro';
+import { Image } from 'astro:assets';
+import { news } from '../constant';
+---
+
+<BaseLayout>
+  <!-- ====================== HERO ====================== -->
+  <section id="about" class="pt-16 mx-auto max-w-6xl px-4 py-10 md:py-16">
+    <div class="grid gap-10 md:grid-cols-3">
+      <!-- ---------- Left column  (2/3) ---------- -->
+      <article class="md:col-span-2">
+        <h1 class="text-4xl font-extrabold leading-tight">
+          Muhammad <span class="text-indigo-500">Areeb</span>
+        </h1>
+        <p class="mt-2 text-sm text-gray-400 dark:text-gray-500">
+          Software Developer&nbsp;@&nbsp;
+          <a
+            href="https://www.rehanisoko.com/"
+            class="underline-offset-2 hover:underline"
+            target="_blank"
+          >
+            Rehani Soko
+          </a>
+        </p>
+
+        <p class="mt-6 max-w-prose text-gray-700 dark:text-gray-300">
+          I graduated with a Bachelor's in Computer and Information Systems Engineering from <strong>NED University of Engineering and Technology (NEDUET), Karachi</strong>
+        </p>
+
+        <p class="mt-4 max-w-prose text-gray-700 dark:text-gray-300">
+          My research interests center on the development of intelligent systems, with a particular focus on 
+          <strong>Computer Vision, Robotics, Software Engineering, and Large Language Models (LLMs)</strong>. 
+          Drawing on full-stack development experience, I design and implement LLM-based agents across a range of applications, 
+          utilizing expertise in Python and JavaScript to advance innovation in this field.
+        </p>
+
+        <!-- Research interests -->
+        <h2 class="mt-10 text-2xl font-semibold text-indigo-400">Research Interests</h2>
+        <p class="mt-1 text-gray-700 dark:text-gray-300">
+          My research interests span several areas within Artificial Intelligence and 
+          Machine Learning, including <strong>Computer Vision</strong> with a focus on 
+          object recognition for robotic systems<strong> Natural Language Processing</strong>, 
+          <strong>Generative AI</strong> through the development of LLM-based agents, 
+          <strong>Demand Forecasting</strong>, and broader applications of 
+          <strong>Artificial Intelligence</strong> in real-world problem solving.
+        </p>
+        
+      </article>
+
+      <!-- ---------- Right column  (1/3) ---------- -->
+      <aside class="flex flex-col items-center gap-4">
+        <Image
+          src="/profile_pic.jpg"  
+          alt="Muhammad Areeb"
+          class="w-full max-w-xs md:h-72 md:w-64 rounded-md object-cover shadow-lg"
+          width={100}
+          height={100}
+          loading="eager"
+          decoding="async"
+          fetchpriority="high"
+        />
+
+        <!-- Contact info -->
+        <ul class="grid grid-cols-[auto_1fr] gap-x-2 gap-y-1 text-sm text-gray-200">
+          <li class="flex items-center gap-2">
+            <FiPhoneCall className="text-pink-400" />
+            <a href="tel:+1312202925" class="hover:underline"
+              >+92&nbsp;(317)&nbsp;2954877</a
+            >
+          </li>
+          <li class="flex items-center gap-2">
+            <FiMail className="text-pink-400" />
+            <a href="mailto:ak6253160@gmail.com" class="hover:underline"
+              >ak6253160@gmail.com</a
+            >
+          </li>
+          
+          <li class="flex items-center gap-2">
+            <SiLinkedin className="text-pink-400" />
+            <a
+              href="https://www.linkedin.com/in/muhammad-areeb-1844a5192/"
+              target="_blank"
+              class="hover:underline"
+              >linkedin.com/in/muhammad-areeb-1844a5192</a
+            >
+          </li>
+          
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ====================== NEWS ====================== -->
+  <section id="news" class="mx-auto max-w-6xl px-4 py-12">
+    <h2 class="text-2xl font-semibold "><a href="/news" class="text-indigo-400 underline-offset-2 hover:underline">News</a></h2>
+
+    <ul class="mt-6 divide-y divide-gray-700/40">
+      {news.slice(0, 4).map(({ date, text }) => (
+        <li class="flex flex-col gap-2 py-3 md:flex-row md:gap-6">
+          <span class="w-32 shrink-0 font-mono text-sm text-gray-400">{date}</span>
+          <span class="text-gray-100">{text}</span>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <!-- ====================== BLOG POSTS ====================== -->
+  <!-- <section id="blog" class="mx-auto max-w-6xl px-4 py-12">
+    <h2 class="text-2xl font-semibold">Latest Blog Posts</h2>
+
+    <ul class="mt-6 space-y-4">
+      {[
+        {
+          date: 'Aug 14, 2024',
+          title:
+            'Building an Object-Detection & Tracking System with YOLOv8 and DeepSORT for objects on the road',
+          href: '#',
+        },
+        {
+          date: 'Aug 12, 2024',
+          title: 'AI Speech Bot: Intelligent Voice Interaction with Llama 3',
+          href: '#',
+        },
+        {
+          date: 'Aug 12, 2024',
+          title: 'Real-Time Facial Emotion Detection with YOLOv8',
+          href: '#',
+        },
+      ].map(({ date, title, href }) => (
+        <li class="flex flex-col gap-2 md:flex-row md:gap-6" >
+          <span class="w-32 shrink-0 font-mono text-sm text-gray-400">{date}</span>
+          <a
+            href={href}
+            class="flex-1 text-indigo-400 underline-offset-2 hover:underline"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {title}
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <div class="mt-4">
+      <a
+        href="#"
+        class="text-sm font-medium text-indigo-300 underline-offset-2 hover:underline"
+        >Checkout More</a
+      >
+    </div>
+  </section> -->
+
+  <!-- ====================== PUBLICATIONS ====================== -->
+  <!-- <section id="publications" class="mx-auto max-w-6xl px-4 py-12"> -->
+    <!-- <h2 class="text-2xl font-semibold">Selected Publications</h2> -->
+
+    <!-- Single publication card -->
+    <!-- <article
+      class="mt-6 flex flex-col gap-6 rounded-lg border border-gray-600/40 p-6 md:flex-row"
+    >
+      <img
+        src="/images/arxiv-logo.png"   
+        alt="arXiv"
+        class="h-28 w-28 rounded bg-white object-contain"
+      />
+
+      <div class="flex flex-1 flex-col gap-3">
+        <header class="space-y-1">
+          <h3 class="text-lg font-medium">
+            An Integrated Approach to Robotic Object Grasping and Manipulation
+          </h3>
+          <p class="text-sm text-gray-400">Aug 2023</p>
+        </header>
+
+        <div class="flex gap-2">
+          <a
+            href="#"
+            target="_blank"
+            class="rounded border border-gray-500 px-3 py-1 text-xs hover:bg-gray-700/60"
+            >ABS</a
+          >
+          <a
+            href="#"
+            target="_blank"
+            class="rounded border border-gray-500 px-3 py-1 text-xs hover:bg-gray-700/60"
+            >HTML</a
+          >
+          <a
+            href="#"
+            target="_blank"
+            class="rounded border border-gray-500 px-3 py-1 text-xs hover:bg-gray-700/60"
+            >PDF</a
+          >
+        </div>
+
+        <p class="mt-1 text-sm text-gray-400">
+          Engaged in exciting research projects with upcoming publications in
+          the pipeline.
+        </p>
+      </div>
+    </article> -->
+  <!-- </section> -->
+
+  <!-- ====================== FOOTER ====================== -->
+  <Footer />
+</BaseLayout>

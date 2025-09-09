@@ -1,0 +1,98 @@
+---
+// src/pages/experiences.astro
+import { Image } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Footer from '../layouts/Footer.astro';
+import { experiences } from '../constant';
+/** A quick JSON array makes the page easy to maintain.
+    You could later move this to Markdown, a CMS API call, or a .ts file. */
+
+---
+
+<BaseLayout title="Experiences | Muhammad Areeb"
+description="Software Developer at Rehani Soko">
+  <!-- ============================================================= -->
+  <!--                     EXPERIENCES SECTION                        -->
+  <!-- ============================================================= -->
+  <section
+    id="experiences"
+    class="pt-20  /* clears the sticky bar */
+           mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 pb-16"
+  >
+    <h1 class="text-3xl font-bold">Experiences</h1>
+
+    <div class="mt-8 space-y-10">
+      {experiences.map((exp) => (
+        <article
+          class="rounded-lg border border-gray-600/40
+                 bg-gray-800/20 dark:bg-gray-700/10
+                 p-6 shadow-sm transition hover:shadow-md"
+          
+        >
+          <div class="flex flex-col gap-6 md:flex-row">
+            <!-- ---------- Logo ---------- -->
+            <Image
+            src={exp.logo}
+            alt={`${exp.company} logo`}
+            class="h-28 w-28 shrink-0 rounded object-contain ring-1 ring-gray-500/30 dark:ring-gray-400/30"
+            width={100}
+            height={100}
+            loading="eager"
+            decoding="async"
+            fetchpriority="high"
+          />
+            <!-- ---------- Details ---------- -->
+            <div class="flex-1">
+              <header class="flex flex-col gap-2 md:flex-row md:justify-between">
+                <h2 class="text-xl font-semibold">
+                  <a href={exp.link} target="_blank" class="hover:text-indigo-600">{exp.company}</a>
+                </h2>
+                <ul class="flex flex-col items-start text-sm text-gray-400 md:items-end">
+                  {exp.periods.map((p) => (
+                    <li >{p}</li>
+                  ))}
+                </ul>
+              </header>
+
+              <dl class="mt-2 space-y-0.5 text-sm">
+                <div>
+                  <dt class="inline text-gray-400">Position:&nbsp;</dt>
+                  <dd class="inline">{exp.position}</dd>
+                </div>
+                <div>
+                  <dt class="inline text-gray-400">Employment Type:&nbsp;</dt>
+                  <dd class="inline">{exp.employmentType}</dd>
+                </div>
+                <div>
+                  <dt class="inline text-gray-400">Location:&nbsp;</dt>
+                  <dd class="inline">{exp.location}</dd>
+                </div>
+              </dl>
+
+              <h3 class="mt-4 font-medium text-gray-200">Responsibilities:</h3>
+              <ul class="ml-5 list-disc space-y-1 text-sm text-gray-100">
+                {exp.responsibilities.map((r) => (
+                  <li>{r}</li>
+                ))}
+              </ul>
+
+              {exp.letterUrl && (
+                <a
+                  href={exp.letterUrl}
+                  target="_blank"
+                  class="mt-6 inline-block rounded bg-indigo-600 px-4 py-2 text-sm
+                         font-medium text-white shadow hover:bg-indigo-700
+                         focus-visible:outline focus-visible:ring-2
+                         focus-visible:ring-indigo-400"
+                >
+                  View Experience Letter
+                </a>
+              )}
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+  <Footer />
+</BaseLayout>

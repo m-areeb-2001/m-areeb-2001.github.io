@@ -1,0 +1,92 @@
+---
+// src/pages/competitions.astro
+import { Image } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { comps, type Competition } from '../constant';
+/* ------------------------------ DATA ------------------------------ */
+
+---
+
+<BaseLayout
+  title="Competitions | Muhammad Areeb"
+  description="Hackathons and coding competitions Muhammad Areeb has participated in."
+>
+  <section
+    id="competitions"
+    class="pt-20 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 pb-24"
+  >
+    <h1 class="text-3xl font-bold">Competitions</h1>
+
+    <div class="mt-8 space-y-10">
+      {comps.map((c: Competition) => (
+        <article
+          class="rounded-lg border border-gray-600/40
+                 bg-gray-800/20 dark:bg-gray-700/10
+                 p-6 shadow-sm transition hover:shadow-md"
+          
+        >
+          <div class="flex flex-col gap-6 md:flex-row">
+            <!-- thumbnail -->
+            <Image
+              src={c.thumbnail}
+              alt={`${c.title} thumbnail`}
+              class="h-28 w-36 shrink-0 rounded object-cover ring-1 ring-gray-500/30 dark:ring-gray-400/30"
+              loading="eager"
+              fetchpriority="high"
+              width="144"
+              height="112"
+            />
+
+            <!-- details -->
+            <div class="flex-1">
+              <header class="flex flex-col gap-1 md:flex-row md:justify-between">
+                <h2 class="text-lg font-semibold">{c.title}</h2>
+                <span class="text-sm text-gray-400 whitespace-nowrap">
+                  {c.dates}
+                </span>
+              </header>
+
+              <p class="text-sm">
+                <strong>Organizer:</strong>{' '}
+                {c.organizer.href ? (
+                  <a
+                    href={c.organizer.href}
+                    target="_blank"
+                    class="text-cyan-300 hover:underline"
+                  >
+                    {c.organizer.name}
+                  </a>
+                ) : (
+                  c.organizer.name
+                )}
+              </p>
+              {c.project && (
+                <p class="text-sm">
+                  <strong>Project:</strong> {c.project}
+                </p>
+              )}
+
+              <p class="mt-1 text-sm text-gray-300">{c.description}</p>
+
+              <div class="mt-4 flex flex-wrap gap-2">
+                {c.links.map((l) => (
+                  <a
+                    href={l.href}
+                    target="_blank"
+                    class="rounded bg-indigo-600 px-4 py-3 text-xs font-medium
+                           text-white shadow hover:bg-indigo-700
+                           focus-visible:outline focus-visible:ring-2
+                           focus-visible:ring-indigo-400"
+                    
+                  >
+                    {l.label}
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+</BaseLayout>
