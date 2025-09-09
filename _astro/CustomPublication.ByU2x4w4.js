@@ -1,0 +1,4 @@
+import{j as e}from"./jsx-runtime.CyXy1Ci3.js";import{r as t}from"./index.CaZlGE7t.js";const n=r=>{const[a,s]=t.useState(!1);return console.log(r),e.jsxs("div",{className:"flex flex-col gap-2",children:[e.jsxs("div",{className:"flex gap-2",children:[e.jsx("button",{type:"button",onClick:()=>s(!a),className:`rounded border border-gray-500 px-3 py-1 text-xs
+             hover:bg-gray-700/60 cursor-pointer`,children:"ABS"}),e.jsx("a",{href:r.htmlUrl,target:"_blank",className:`rounded border border-gray-500 px-3 py-1 text-xs
+                hover:bg-gray-700/60`,children:"HTML"}),e.jsx("a",{href:r.pdfUrl,target:"_blank",className:`rounded border border-gray-500 px-3 py-1 text-xs
+                hover:bg-gray-700/60`,children:"PDF"})]}),a&&e.jsx("div",{className:"flex flex-col gap-2",children:e.jsx("p",{children:r.abstract})})]})};export{n as default};
