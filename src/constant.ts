@@ -1,7 +1,7 @@
 export const news = [
   {
     date: "Nov 01, 2024",
-    text: "Rejoined Rehani Soko as Full Stack Developer",
+    text: "Rejoined Rehani Soko as Software Engineer",
   },
   {
     date: "Oct 30, 2024",
@@ -18,7 +18,7 @@ export const news = [
 
   {
     date: "Sep 01, 2022",
-    text: "Joined Monarca Jewels as Frontend Developer (As a Freelancer)",
+    text: "Joined Monarca Jewels as Software Engineer (Part Time)",
   },
   {
     date: "Jan 31, 2023",
@@ -26,7 +26,7 @@ export const news = [
   },
   {
     date: "Feb 01, 2023",
-    text: "Joined Rehani Soko as a Full Stack Developer",
+    text: "Joined Rehani Soko as a Software Engineer",
   },
 ];
 
@@ -150,16 +150,17 @@ export const experiences = [
   {
     company: "Rehani Soko",
     logo: "/rehani.jpg",
-    position: "Full Stack Developer",
+    position: "Software Engineer",
     employmentType: "Full Time",
     periods: ["Feb 2023 - Present"],
     location: "57 N St NW, Washington DC (Remote)",
     responsibilities: [
-      "Developed and maintained scalable backend APIs using Django and integrated with PostgreSQLand MongoDB.",
-      "Built dynamic and responsive frontend interfaces using Nuxt (Vue js) , enhancing user experience across platforms.",
-      "Implemented authentication and authorization using JWT, ensuring secure access control throughout the application.",
-      "Implement Real Time Chat functionality  using SocketIO and  NestJS.",
+      "Developed a cutting-edge real estate platform with Vue.js (frontend) and Django REST Framework (DRF) (backend).",
+      "Built and optimized frontend user flows for a seamless, high-performance user experience.",
+      "Designed and implemented backend APIs to support core platform features.",
+      "Integrated external APIs and services to extend platform functionality.",
     ],
+
     letterUrl: "",
     link: "https://rehanisoko.com/",
   },
@@ -176,12 +177,26 @@ export const experiences = [
     ],
     link: "https://www.algorithm.com.pk/index.html",
   },
+
+  {
+    company: "Crosswing Inc.",
+    logo: "https://owais142002.github.io/assets/img/crosswing.jpg",
+    position: "Machine Learning Engineer (Remote)",
+    employmentType: "Full Time",
+    periods: ["Feb 2023 - Apr 2024"],
+    location: "Ontario, Canada (Remote)",
+    responsibilities: [
+      "I worked on demand forecasting, where I designed and implemented machine learning models to predict customer needs with greater accuracy. Using techniques like BlockRNN, CatBoost, and XGBoost, I was able to capture complex patterns in data and translate them into actionable insights. This effort helped improve inventory planning and resource allocation, ensuring smarter, data-driven decision-making.",
+    ],
+    link: "https://www.crosswing.com/",
+  },
+
   {
     company: "Monarca Jewels",
     logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrEEJBY_TZ9_Vj-5wYlR58Rkc2WaLdrftKjg&shttps://scontent.fkhi22-1.fna.fbcdn.net/v/t39.30808-6/350803739_1075879650037972_8003595818928452589_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=og3N33PJNVIQ7kNvwEHXYFI&_nc_oc=AdktrFpxajskFdVofLT-KmQhASs86oSYPi5ibIDZebFOPiZTrYfqU7ui_hGFqHiPL9PoLC5mPz41HtCmsZc_C6S8&_nc_zt=23&_nc_ht=scontent.fkhi22-1.fna&_nc_gid=W7UqlUa9lM86543CPYuKOw&oh=00_AfNJKgivC9bKPQC2ifwkCnOtEPgbvsLxgy3bOsh5bn5ZTw&oe=6867455C",
-    position: "Full Stack Developer (Remote)",
+    position: "Software Engineer (Remote)",
     employmentType: "Part Time",
-    periods: ["Sep 2022 - Jan 2023"],
+    periods: ["Aug 2022 - Jan 2023"],
     location: "Ontario, Canada (Remote)",
     responsibilities: [
       "I was engaged as a member of Monarca Jewels' in-house technical team. Distinguished by its innovative approach, this jewelry store employs Demand Forecasting and AI-powered chatbots to gain deeper insights into customer preferences and tailor interactions accordingly. My role involved developing the company's website using the MERN stack, marking the inception of my journey in web development within this dynamic and forward-thinking environment.",
@@ -192,9 +207,9 @@ export const experiences = [
   {
     company: "Profecia Links",
     logo: "https://owais142002.github.io/assets/img/profecia.png",
-    position: "Junior Software Engineer ",
+    position: "Software Engineer Grade A1",
     employmentType: "Part Time",
-    periods: ["Apr 2021 - Aug 2022"],
+    periods: ["Apr 2021 - Jul 2022"],
     location: "Dubai, United Arab Emirates (Remote)",
     responsibilities: [
       "Developed, implemented, and maintained web scrapers in JavaScript for extracting data from various e-commerce websites.",
