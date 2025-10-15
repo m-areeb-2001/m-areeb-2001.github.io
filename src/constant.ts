@@ -1,7 +1,7 @@
 export const news = [
   {
     date: "Nov 01, 2024",
-    text: "Rejoined Rehani Soko as Software Engineer",
+    text: "Joined Rehani Soko as a Software Engineer (Full Time)",
   },
   {
     date: "Oct 30, 2024",
@@ -18,15 +18,15 @@ export const news = [
 
   {
     date: "Sep 01, 2022",
-    text: "Joined Monarca Jewels as Software Engineer (Part Time)",
+    text: "Joined My AskAI as Software Engineer (Part Time)",
   },
   {
     date: "Jan 31, 2023",
-    text: "Concluded my role at Monarca Jewels",
+    text: "Concluded my role at My AskAI",
   },
   {
     date: "Feb 01, 2023",
-    text: "Joined Rehani Soko as a Software Engineer",
+    text: "Started working with Rehani Soko as a freelancer",
   },
 ];
 
@@ -192,16 +192,16 @@ export const experiences = [
   },
 
   {
-    company: "Monarca Jewels",
-    logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrEEJBY_TZ9_Vj-5wYlR58Rkc2WaLdrftKjg&shttps://scontent.fkhi22-1.fna.fbcdn.net/v/t39.30808-6/350803739_1075879650037972_8003595818928452589_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=og3N33PJNVIQ7kNvwEHXYFI&_nc_oc=AdktrFpxajskFdVofLT-KmQhASs86oSYPi5ibIDZebFOPiZTrYfqU7ui_hGFqHiPL9PoLC5mPz41HtCmsZc_C6S8&_nc_zt=23&_nc_ht=scontent.fkhi22-1.fna&_nc_gid=W7UqlUa9lM86543CPYuKOw&oh=00_AfNJKgivC9bKPQC2ifwkCnOtEPgbvsLxgy3bOsh5bn5ZTw&oe=6867455C",
+    company: "My AskAI",
+    logo: "https://owais142002.github.io/assets/img/myaskai.jpg",
     position: "Software Engineer (Remote)",
     employmentType: "Part Time",
     periods: ["Aug 2022 - Jan 2023"],
-    location: "Ontario, Canada (Remote)",
+    location: "Washington D.C, USA (Remote)",
     responsibilities: [
-      "I was engaged as a member of Monarca Jewels' in-house technical team. Distinguished by its innovative approach, this jewelry store employs Demand Forecasting and AI-powered chatbots to gain deeper insights into customer preferences and tailor interactions accordingly. My role involved developing the company's website using the MERN stack, marking the inception of my journey in web development within this dynamic and forward-thinking environment.",
+      "I worked on the frontend development using ReactJS, focusing on integrating and consuming APIs. My main responsibility was to build a responsive and user-friendly interface for seamless interaction with the backend services. This involved implementing data handling and ensuring smooth communication between the UI and APIs.",
     ],
-    link: "https://www.monarcajewels.com/",
+    link: "https://myaskai.com/",
   },
 
   {
